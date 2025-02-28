@@ -8,7 +8,7 @@ import { Permission } from './auth.model';
 export class AuthService {
   activePermission = signal<Permission>('guest');
 
-  authenticate(email: string, password: string) {
+  authenticate(email: string, password: string): void {
     console.log(email, password);
     if (email === 'admin@example.com' && password === 'admin') {
       this.activePermission.set('admin');
@@ -16,10 +16,12 @@ export class AuthService {
       this.activePermission.set('user');
     } else {
       this.activePermission.set('guest');
+      this.activePermission.call('Invalid email or password');
     }
   }
 
   logout() {
     this.activePermission.set('guest');
+
   }
 }
