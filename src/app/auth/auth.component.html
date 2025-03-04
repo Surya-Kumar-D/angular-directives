@@ -17,5 +17,8 @@
   @if (isAdmin()) {
     <p> This is an admin page </p>
   }
-  <p appAuth="user">This is an User page</p>
+<!--  <ng-template appAuth="user">-->
+<!--    <p >This is an User page</p>-->
+<!--  </ng-template>-->
+    <p *appAuth="'user'" class="protected-content unauthenticated">This is an User page.</p>
 </form>
